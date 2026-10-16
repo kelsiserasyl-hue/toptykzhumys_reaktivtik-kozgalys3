@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Байқоңыр: ғарышқа жол</title>
+<style>
+:root{--bg:#050b1f;--cd:#0d1a3a;--tx:#e6ecff;--mu:#8fa3d6;--ac:#4cc9f0;--g:#ff7b2e;--r:#3ddc84;--ln:#22366b;--no:#ff5d5d;--y:#ffd166}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#0a1a4a,var(--bg) 60%);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:880px;margin:auto;padding:14px}h1{font-size:1.45rem;margin:6px 0 2px}h2{font-size:1.1rem;margin:0 0 8px;color:var(--ac)}.t{color:var(--mu);font-size:.88rem}
+.pv{border-left:4px solid var(--y);background:rgba(255,209,102,.1);padding:8px 12px;border-radius:8px;margin:8px 0;font-style:italic}
+nav{display:flex;gap:6px;overflow-x:auto;margin:8px 0}nav button{flex:none;background:var(--cd);color:var(--tx);border:1px solid var(--ln);border-radius:20px;padding:8px 13px;font:inherit;font-size:.9rem;cursor:pointer}nav button.on{background:var(--ac);color:#04122e;font-weight:700}
+section{display:none}section.on{display:block}.c{background:rgba(13,26,58,.88);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-bottom:12px}
+button.b{background:var(--ac);color:#04122e;font:inherit;font-weight:700;border:0;border-radius:10px;padding:9px 15px;cursor:pointer;margin:8px 6px 0 0}button.b.s{background:var(--ln);color:var(--tx)}button:disabled{opacity:.45;cursor:default}
+canvas{width:100%;display:block;border-radius:12px;border:1px solid var(--ln)}svg{width:100%;max-width:480px;display:block;margin:auto}
+.o{display:block;width:100%;text-align:left;background:rgba(5,11,31,.7);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:9px 12px;margin:5px 0;font:inherit;cursor:pointer}.o.ok{border-color:var(--r);background:rgba(61,220,132,.18)}.o.no{border-color:var(--no);background:rgba(255,93,93,.18)}.o.sel{border-color:var(--ac);background:rgba(76,201,240,.18)}
+.e{font-size:.9rem;color:var(--mu);margin:4px 0 12px}.ck{display:flex;gap:8px;align-items:center;margin:5px 0;padding:6px 8px;background:rgba(5,11,31,.6);border-radius:8px}.ck span{flex:1;font-size:.9rem}.st{font-weight:700}
+#msg{min-height:1.6em;font-weight:600;margin-top:8px}.p2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.p2{grid-template-columns:1fr}}.p2>div{background:rgba(5,11,31,.6);border-radius:10px;padding:10px;font-size:.92rem}
+.big{font-size:2.4rem;font-weight:800;color:var(--y);text-align:center}
+</style></head><body><main>
+<h1>🛰️ Байқоңыр: ғарышқа жол</h1><p class="t">3-топ «Байқоңыр сарапшылары» · 9-сынып, физика · 9.2.3.4</p>
+<div class="pv">«Тәртіп — тәрбие бастауы, тәртіпсіздік – өміріңнің қас жауы»</div>
+<nav id="nv"></nav>
+<section id="s0"><div class="c"><h2>1-кезең. Байқоңырды зерттеу</h2>
+<svg viewBox="0 0 300 150"><polygon points="12,78 40,50 95,42 135,20 190,26 232,14 288,46 270,76 240,94 200,98 150,112 100,108 55,104" fill="#143a6b" stroke="#4cc9f0" stroke-width="1.5"/><circle cx="128" cy="86" r="5" fill="#ff7b2e"><animate attributeName="r" values="4;9;4" dur="1.6s" repeatCount="indefinite"/></circle><text x="136" y="92" fill="#fff" font-size="9">Байқоңыр</text><text x="95" y="68" fill="#8fa3d6" font-size="8">Қызылорда облысы аумағы</text><text x="100" y="140" fill="#8fa3d6" font-size="8">Қазақстан (схема, масштабсыз)</text></svg>
+<p>Байқоңыр ғарыш айлағы Қазақстан аумағында, Қызылорда облысында орналасқан. Мұнан 1957 жылы алғашқы жасанды серік, 1961 жылы Ю. Гагариннің ғарыш ұшуы басталды. Қазіргі кезде ол халықаралық ғарыш бағдарламаларына қызмет етеді.</p>
+<button class="b" id="bR">📍 Аймақтық маңызы</button><button class="b" id="bI">🌍 Халықаралық маңызы</button><div id="inf" class="e" style="margin-top:10px">Батырманы басып, ақпаратты оқыңыз.</div>
+<button class="b s" onclick="go(1)">Келесі кезең →</button></div></section>
+<section id="s1"><div class="c"><h2>2-кезең. Зымыран ұшырылымын басқару</h2><canvas id="cv" width="640" height="320"></canvas><div id="msg"></div>
+<div id="cl"></div>
+<button class="b" id="bD">🔍 Дайындықты тексеру</button><button class="b" id="bP">🛡️ Қауіпсіздік рұқсаты</button><button class="b" id="bL">🚀 Ұшыру</button><button class="b s" id="bX">↺ Қайта бастау</button>
+<p class="t" style="margin-top:10px"><span style="color:var(--g)">━ газ (төмен)</span> · <span style="color:var(--r)">━ зымыран (жоғары)</span>. Алдымен әр қауіпсіздік шартын тексеріңіз, сосын дайындық пен рұқсатты алыңыз.</p>
+<p><b>Физикалық негізі:</b> зымыран жанғыш газды төмен үлкен жылдамдықпен шығарады. Бастапқы импульс нөл, сондықтан импульстің сақталу заңы бойынша зымыран қарама-қарсы бағытта (жоғары) қозғалады: m<sub>газ</sub>v<sub>газ</sub> = m<sub>зымыран</sub>v<sub>зымыран</sub>.</p>
+<button class="b s" onclick="go(2)">Келесі кезең →</button></div></section>
+<section id="s2"><div class="c"><h2>3-кезең. Заң және тәртіп</h2><p class="t">Әр жағдаятта шешім таңдаңыз.</p><div id="sc3"></div><button class="b s" onclick="go(3)">Келесі кезең →</button></div></section>
+<section id="s3"><div class="c"><h2>4-кезең. Байқоңырдың маңызы</h2><p class="t">Әр тапсырмада дұрыс жауаптардың барлығын белгілеп, «Тексеру» батырмасын басыңыз.</p><div id="tk"></div><button class="b" onclick="go(4)">🏁 Қорытынды экран</button></div></section>
+<section id="s4"><div class="c"><h2>Ғарыш сарапшысының қорытындысы</h2><div class="big" id="tot">0 / 8</div><p id="lv" style="text-align:center;font-weight:700"></p><div id="bd" class="e"></div>
+<div class="pv" id="pw"></div></div></section>
+<script>
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+const NV=["1. Зерттеу","2. Ұшыру","3. Заң және тәртіп","4. Маңызы","🏁 Қорытынды"];let cur=0;
+NV.forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>go(i);$("#nv").append(b)});
+function go(i){cur=i;document.querySelectorAll("section").forEach((s,j)=>s.classList.toggle("on",i==j));[...$("#nv").children].forEach((b,j)=>b.classList.toggle("on",i==j));if(i==4)fin();scrollTo(0,0)}
+// stage 1
+$("#bR").onclick=()=>$("#inf").innerHTML="<b>Аймақтық маңызы:</b> Қызылорда өңірінде жұмыс орындарын жасайды, инфрақұрылымды дамытады, Қазақстанда ғарыш саласы мен ғылыми кадрларды қалыптастыруға мүмкіндік береді.";
+$("#bI").onclick=()=>$("#inf").innerHTML="<b>Халықаралық маңызы:</b> мұнан халықаралық ғарыш станциясына экипаждар мен жүктер жөнелтіледі, әр елдің серіктері ұшырылады, ғарыштағы халықаралық ынтымақтастыққа қызмет етеді.";
+// stage 2
+const CH=["Отын деңгейі мен қысым тексерілді","Қауіпті аймақта адамдар жоқ, алаң тазаланды","Ауа райы рұқсат етеді (жел мен найзағай жоқ)","Байланыс және телеметрия жүйесі жұмыс істейді","Мамандардың нұсқаулығы бойынша тексеріс парағы толтырылды"];
+let ok,ready,perm,early,stage,pts2,PA,ry,rv,cd,timer,done2;
+const msg=(t,c)=>{$("#msg").textContent=t;$("#msg").style.color=c||"var(--tx)"};
+function rs2(){ok=CH.map(()=>0);ready=perm=early=0;stage="idle";ry=0;rv=0;PA=[];clearInterval(timer);done2=0;
+$("#cl").innerHTML="";CH.forEach((c,i)=>{const d=document.createElement("div");d.className="ck";d.innerHTML="<span>"+c+"</span><b class='st' id='k"+i+"'>⏳</b>";const b=document.createElement("button");b.className="b s";b.style.margin=0;b.textContent="Тексеру";b.onclick=()=>{if(stage!="idle")return;b.disabled=1;$("#k"+i).textContent="…";setTimeout(()=>{ok[i]=1;$("#k"+i).textContent="✅"},600)};d.append(b);$("#cl").append(d)});
+msg("Басқару орталығы: шарттарды тексеріңіз.");pts2=null}
+$("#bD").onclick=()=>{if(stage!="idle")return;const m=ok.map((v,i)=>v?"":(i+1)).filter(Boolean);if(m.length){msg("❌ Дайындық аяқталмады. Тексерілмеген шарттар: №"+m.join(", №"),"var(--no)");ready=0}else{ready=1;msg("✅ Барлық шарттар орындалды, дайындық аяқталды. Енді қауіпсіздік рұқсатын алыңыз.","var(--r)")}};
+$("#bP").onclick=()=>{if(stage!="idle")return;if(!ready){msg("⛔ Рұқсат берілмейді: алдымен дайындықты толық аяқтаңыз.","var(--no)");early++;return}perm=1;msg("🛡️ Қауіпсіздік рұқсаты берілді. «Ұшыру» батырмасын басуға болады.","var(--r)")};
+$("#bL").onclick=()=>{if(stage!="idle")return;if(!perm){early++;msg("⛔ Ұшыру бұғатталған: қауіпсіздік шарттары мен рұқсат орындалмаған. Тәртіпті бұзуға болмайды!","var(--no)");return}stage="cd";cd=5;msg("Кері санау: "+cd,"var(--y)");timer=setInterval(()=>{cd--;if(cd>0)msg("Кері санау: "+cd,"var(--y)");else{clearInterval(timer);stage="fly";msg("🚀 Ұшты! Газ төмен, зымыран жоғары қозғалады.","var(--r)")}},700)};
+$("#bX").onclick=rs2;
+const cv=$("#cv"),x=cv.getContext("2d"),ST=[];for(let i=0;i<80;i++)ST.push([Math.random()*640,Math.random()*250,Math.random()*1.3+.3]);
+function arr(x1,y1,x2,y2,c){x.strokeStyle=x.fillStyle=c;x.lineWidth=4;x.beginPath();x.moveTo(x1,y1);x.lineTo(x2,y2);x.stroke();const a=Math.atan2(y2-y1,x2-x1);x.beginPath();x.moveTo(x2,y2);x.lineTo(x2-11*Math.cos(a-.45),y2-11*Math.sin(a-.45));x.lineTo(x2-11*Math.cos(a+.45),y2-11*Math.sin(a+.45));x.fill()}
+function draw(t){x.fillStyle="#08143a";x.fillRect(0,0,640,320);ST.forEach(s=>{x.globalAlpha=.4+.5*Math.sin(t/500+s[0]);x.fillStyle="#fff";x.fillRect(s[0],s[1],s[2],s[2])});x.globalAlpha=1;
+x.fillStyle="#c9a96b";x.fillRect(0,270,640,50);x.fillStyle="#555";x.fillRect(250,262,140,10);x.fillStyle="#888";x.fillRect(222,150,8,120);x.fillRect(222,150,24,5);x.fillStyle="#37474f";x.fillRect(470,215,110,55);x.fillStyle="#4cc9f0";x.fillRect(480,225,22,14);x.fillRect(510,225,22,14);x.fillRect(540,225,22,14);x.fillStyle="#fff";x.font="11px system-ui";x.fillText("Басқару орталығы",476,208);
+if(stage=="fly"){rv+=.06;ry+=rv;if(ry>330&&!done2){done2=1;stage="end";pts2=1+(early==0?1:0);msg("🛰️ Зымыран орбитаға бағыт алды! Ұпай: "+pts2+" / 2"+(early?" (рұқсатсыз әрекет жасалды, −1)":" (тәртіп сақталды)"),"var(--r)")}
+for(let i=0;i<4;i++)PA.push({x:320+(Math.random()-.5)*14,y:262-ry+Math.random()*6,vy:3+Math.random()*3,vx:(Math.random()-.5)*2,l:1})}
+PA=PA.filter(p=>p.l>0);PA.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.l-=.03;x.globalAlpha=Math.max(0,p.l);x.fillStyle=p.l>.6?"#ffe27a":"#ff7b2e";x.beginPath();x.arc(p.x,p.y,5*p.l+1,0,7);x.fill()});x.globalAlpha=1;
+const rx=320,y0=262-ry,sh=stage=="cd"&&cd<3?Math.sin(t/25)*1.5:0;x.save();x.translate(rx+sh,y0);x.fillStyle="#e8ecf5";x.beginPath();x.moveTo(0,-95);x.quadraticCurveTo(22,-50,20,0);x.lineTo(-20,0);x.quadraticCurveTo(-22,-50,0,-95);x.fill();x.fillStyle="#e63946";x.beginPath();x.moveTo(0,-95);x.quadraticCurveTo(13,-75,16,-66);x.lineTo(-16,-66);x.quadraticCurveTo(-13,-75,0,-95);x.fill();x.fillStyle="#4cc9f0";x.beginPath();x.arc(0,-45,8,0,7);x.fill();x.fillStyle="#e63946";x.fillRect(-34,-18,14,18);x.fillRect(20,-18,14,18);x.restore();
+if(stage=="fly"&&ry<250){arr(rx+60,y0+10,rx+60,y0+70,"#ff7b2e");arr(rx+60,y0-30,rx+60,y0-90,"#3ddc84")}}
+rs2();(function l(t){draw(t);requestAnimationFrame(l)})(0);
+// stage 3
+const SC=[["Қауіпсіздік тексерісі аяқталмаса, ұшыруды бастауға бола ма?","Жоқ, тексеріс толық аяқталмайынша ұшыруға болмайды",["Болады, егер уақыт өтіп бара жатса","Болады, егер бір ғана пункт қалса","Болады, егер ауа райы жақсы болса"],"Қауіпсіздік шарттары толық орындалуы тиіс: бір пункттің өзі апатқа себеп болуы мүмкін."],
+["Мамандардың нұсқаулығын сақтау неліктен маңызды?","Нұсқаулық тәжірибе мен қауіпсіздік талаптарына негізделген, ол адам өмірі мен техниканы сақтайды",["Ол тек бақылау үшін жазылған","Жылдам жұмыс істеу үшін оны елемеуге болады","Оның ешқандай мәні жоқ"],"Нұсқаулық — бұрынғы қателерден шығарылған ережелер жиынтығы."],
+["Қауіпсіздік талаптарын елемеу қандай салдарға әкелуі мүмкін?","Апатқа, адамдардың өміріне қауіпке, техниканың жойылуына және экологиялық зиянға",["Ұшыру тезірек өтеді","Ешқандай салдары болмайды","Тек уақыт үнемделеді"],"Ғарыш саласында кішкентай қателік те ауыр салдарға әкеледі, сондықтан тәртіп пен жауапкершілік бірінші орында."]];
+let p3=0;SC.forEach(([q,r,w,e],k)=>{const d=document.createElement("div");d.innerHTML="<b>"+(k+1)+". "+q+"</b>";let dn=0;const ex=document.createElement("div");ex.className="e";
+sh([r,...w]).forEach(o=>{const b=document.createElement("button");b.className="o";b.textContent=o;b.onclick=()=>{if(dn)return;dn=1;const g=o==r;p3+=g;d.querySelectorAll(".o").forEach(q=>q.classList.add(q.textContent==r?"ok":q==b?"no":"x"));ex.textContent=(g?"✅ Дұрыс шешім! ":"❌ Қате шешім. ")+e};d.append(b)});d.append(ex);$("#sc3").append(d)});
+// stage 4
+const TK=[["1. Байқоңырдың Қазақстан үшін маңызын түсіндір (дұрыс тұжырымдарды белгіле):",["Қызылорда өңірінде жұмыс орындарын жасап, инфрақұрылымды дамытады","Қазақстанда ғарыш саласы мен ғылыми кадрлардың дамуына мүмкіндік береді","Қазақстанның ғарыштағы беделі мен ғылыми мүмкіндіктерін арттырады"],["Қазақстанның бүкіл шекарасын қорғайды","Тек саяхатшыларға арналған саябақ болып табылады"]],
+["2. Оның халықаралық ғарыш саласындағы рөлін сипатта:",["Мұнан халықаралық ғарыш станциясына экипаждар мен жүктер жөнелтіледі","Әр елдің серіктері мен ғарыш аппараттары ұшырылады","Ғарыштағы халықаралық ынтымақтастыққа қызмет етеді"],["Тек бір елдің зымырандары ұшырылады","Мұнда ғарыштық зерттеулер жүргізілмейді"]],
+["3. Ғарыш қызметінде заң мен тәртіпті сақтаудың үш себебін таңда:",["Адам өмірін және денсаулығын қорғау үшін","Апаттар мен үлкен шығынның алдын алу үшін","Халықаралық келісімдер мен міндеттемелерді орындау үшін"],["Ұшыруды барынша жылдамдату үшін","Ережені бұзғанның қызықты болуы үшін","Ережелер тек бақылаушыларға арналған"]]],p4=[0,0,0];
+TK.forEach(([q,r,w],k)=>{const d=document.createElement("div");d.innerHTML="<b>"+q+"</b>";const bs=[];let dn=0;sh([...r,...w]).forEach(o=>{const b=document.createElement("button");b.className="o";b.textContent=o;b.onclick=()=>{if(!dn)b.classList.toggle("sel")};bs.push(b);d.append(b)});
+const ck=document.createElement("button");ck.className="b";ck.textContent="Тексеру";const ex=document.createElement("div");ex.className="e";
+ck.onclick=()=>{if(dn)return;dn=1;let g=1;bs.forEach(b=>{const c=r.includes(b.textContent),s=b.classList.contains("sel");if(c!=s)g=0;b.className="o"+(c?" ok":s?" no":"")});p4[k]=g;ex.textContent=g?"✅ Толық дұрыс! +1 ұпай":"❌ Толық емес. Жасыл — дұрыс жауаптар."};d.append(ck,ex);$("#tk").append(d)});
+function fin(){const t=(pts2||0)+p3+p4.reduce((a,b)=>a+b,0);$("#tot").textContent=t+" / 8";$("#lv").textContent=t>=7?"🏆 Ғарыш сарапшысы: өте жақсы!":t>=5?"👍 Тәжірибелі маман: жақсы":t>=3?"Бастаушы маман: қанағаттанарлық":"Тағы да жаттығу керек";
+$("#bd").innerHTML="Ұшыру: "+(pts2==null?"аяқталмаған (0)":pts2+"/2")+" · Заң және тәртіп: "+p3+"/3 · Байқоңыр маңызы: "+p4.reduce((a,b)=>a+b,0)+"/3";
+$("#pw").innerHTML="«Тәртіп — тәрбие бастауы, тәртіпсіздік – өміріңнің қас жауы». Ғарыш саласында әр ереже адам өмірін қорғайды: қауіпсіздік тексерісін аяқтамай ұшыру мүмкін емес. Жауапкершілік пен тәртіп — табыстың кепілі."}
+go(0);
+</script></main></body></html>
